@@ -57,9 +57,9 @@ const instagram = 'http://www.instagram.com/';
 const aktif = '08:00 - 22:00';
 const vcard = 'BEGIN:VCARD\n'
             + 'VERSION:3.0\n' 
-            + 'FN:jhon\n' // Nama kamu
+            + 'FN:Causs\n' // Nama kamu
             + 'ORG:Lexa;\n' // Nama bot
-            + 'TEL;type=CELL;type=VOICE;waid=553599138474:+55 11 94954-2619\n' //Nomor whatsapp kamu
+            + 'TEL;type=CELL;type=VOICE;waid=+55 11 94954-2619:+553599138474\n' //Nomor whatsapp kamu
             + 'END:VCARD'
 prefix = '.','!','#'
 blocked = []
@@ -291,8 +291,8 @@ async function starts() {
 					premium: '[❗] ESTE PEDIDO É SO PARA *USUÁRIOS PREMIUMS*',
 					mod: '[❗] ESTE PEDIDO É ESPECÍFICO PARA USUARIO MOD CAUSS BOT*',
 					benned: 'Você para a banda, por favor, contate o proprietário para abrir sua banda',
-					ownerG: '[❗] Jhon? Este é um recurso especial para o jhom❌',
-					ownerB: '[❗] Jhon? Este é um recurso especial para o jhom❌',
+					ownerG: '[❗] Causs? Este é um recurso especial para o Causs ❌',
+					ownerB: '[❗] Causs? Este é um recurso especial para o Causs ❌',
 					userB: `──「 LISTA 」──\nOlá Kak !\nDesculpe, irmã. Você não está registrado como amigo de CAUSS. Registre-se para fazer amizade com o bot Causs por meio, \n\nCommand : ${prefix}daftar nama|idade\nExemplo : ${prefix}daftar Causs|17\n\n──「 CAUSS BOT 」──`,
 					admin: '[❗] Este comando só pode ser usado por administradores de grupo! ❌',
 					Badmin: ' [❗] Este comando só pode ser usado quando o bot se torna administrador! ❌',
@@ -304,7 +304,7 @@ async function starts() {
 			const mod = [ownerNumber,"553599138474@s.whatsapp.net"]//ubah nomor lo
 			const adminbotnumber = ["553599138474@s.whatsapp.net"]//ubah nomor lo
 			const frendsowner = ["553599138474@s.whatsapp.net"]//ubah nomor lo
-			const premium = ["553599138474@s.whatsapp.net","+55 11 94954-2619@s.whatsapp.net"] 
+			const premium = ["553599138474@s.whatsapp.net","551194954-2619@s.whatsapp.net"] 
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -525,7 +525,7 @@ if (text.includes("placa"))
 		}, 0)
 	}
 	
-	        if (messagesC.includes("pretoimundo")){
+	        if (messagesC.includes("preto")){
 		if (!isGroup) return
 		if (!isAntiRacismo) return
 		if (isGroupAdmins) return reply('cara, nao fale essas coisas, é errado, mas vc e admin n irei te banir')
@@ -558,7 +558,7 @@ if (text.includes("placa"))
 		}, 0)
 	}
 	
-	        if (messagesC.includes("pq vc e preto")){
+	        if (messagesC.includes("da adm")){
 		if (!isGroup) return
 		if (!isAntiRacismo) return
 		if (isGroupAdmins) return reply('cara, nao fale essas coisas, é errado, mas vc e admin n irei te banir')
@@ -684,7 +684,7 @@ if (text.includes("placa"))
 	
 		if (messagesC.includes("bot")){
 			client.updatePresence(from, Presence.composing)
-			reply("oi")
+			reply("ooii👋")
 	}
 	
 			if (messagesC.includes("bah")){
@@ -1670,7 +1670,7 @@ if (text.includes("placa"))
                          text: teks4,
                          contextInfo: {mentionedJid: [nomor]},
                      }
-                    client.sendMessage('553599138474@s.whatsapp.net', options, text, {quoted: mek})
+                    client.sendMessage('556192247994@s.whatsapp.net', options, text, {quoted: mek})
                     reply('1 trava enviada')
                     break
            case 'playmp3':
@@ -3549,10 +3549,16 @@ break
 					buffer = await getBuffer(`https://imgur.com/${memein.hash}.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
 					break
+				case 'rr':
+                    rate = body.slice(1)
+                    ratee = ["Tac... Não disparou","Tac... Não disparou,ainda...","Tac💥 Disparou e você morreu","Tac💥Disparou mas a bala pegou de raspão","A arma falhou","Tac... Por pouco que não dispara...","Tac... A arma estava descarregada"]
+                    const cu = ratee[Math.floor(Math.random() * ratee.length)]
+                    client.sendMessage(from, ''+ cu+'', text, { quoted: mek })
+                    break
 				case 'dono':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4V_4fdvF8rluX0T3KKGOvY0TusMwx7nVWtw&usqp=CAU`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: '*CRIADOR:* CAUSS\n*YOUTUBE:* https://youtube.com/channel/UCpB3qh2Sp3K23s9a2Q-Gf-g\n*WPP:* wa.me/+5547992091566\n*INSTA:* @animexx_png\n\n\nEspero que tenham gostado do bot 🐊🚩️'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: '*CRIADOR:* JHON🐉\n\nEspero que tenham gostado do bot 🐊🐉'})
 					break
 				case 'setprefix':
 					if (args.length < 1) return
