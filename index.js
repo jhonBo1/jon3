@@ -76,24 +76,7 @@ const _limit = JSON.parse(fs.readFileSync('./database/json/limit.json'))
 /*********** END LOAD ***********/
 
 /********** FUNCTION ***************/
-const "play":
-            if(args.length === 1) return client.reply(from,erroComandoMsg(command),id)
-            servicos.obterInfoVideo(body.slice(6)).then(play_video =>{
-                if(play_video == null) return client.reply(from,msgs_texto.utilidades.play.nao_encontrado,id)
-                if(play_video.duration > 300000) return client.reply(from,msgs_texto.utilidades.play.limite,id)
-                let play_espera = preencherTexto(msgs_texto.utilidades.play.espera,play_video.title,play_video.durationFormatted)
-                client.reply(from,play_espera,id)
-                servicos.obterYtMp3(play_video).then(mp3_path =>{
-                    client.sendFile(from, mp3_path, "musica.mp3","", id).then(()=>{
-                        fs.unlinkSync(mp3_path)
-                    })
-                }).catch(err=>{
-                    client.reply(from,err.message,id)
-                })
-            }).catch(err=>{
-                client.reply(from,err.message,id)
-            })
-            break
+           
 const getLevelingXp = (userId) => {
             let position = false
             Object.keys(_level).forEach((i) => {
@@ -796,6 +779,7 @@ if (text.includes("placa"))
 					client.sendMessage(from, 'Adicionando mensagem à lista com sucesso' , text, { quoted: mek })
 					client.sendMessage(from, addsay(prefix), text, { quoted: mek })
 					break
+
 					case 'addsay':
 				    hai = body.slice(8)
 						sayrandom.push(hai)
@@ -887,9 +871,9 @@ if (text.includes("placa"))
                     if (!isPremium) return reply(mess.only.premium)
                     client.sendMessage(from, destrava(prefix), text, { quoted: mek })
                     break
-                   case 'pack':
+                   case 'play':
                     if (!isPremium) return reply(mess.only.premium)
-                    client.sendMessage(from, pack(prefix), text, { quoted: mek })
+                    client.sendMessage(from, play,(prefix), text, { quoted: mek })
                     break
                    case 'chentai':
                     if (!isPremium) return reply(mess.only.premium)
