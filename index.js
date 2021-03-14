@@ -76,7 +76,7 @@ const _limit = JSON.parse(fs.readFileSync('./database/json/limit.json'))
 /*********** END LOAD ***********/
 
 /********** FUNCTION ***************/
-case "play":
+const "play":
             if(args.length === 1) return client.reply(from,erroComandoMsg(command),id)
             servicos.obterInfoVideo(body.slice(6)).then(play_video =>{
                 if(play_video == null) return client.reply(from,msgs_texto.utilidades.play.nao_encontrado,id)
