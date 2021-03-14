@@ -5,11 +5,12 @@ const {
     Mimetype,
     GroupSettingChange
 } = require('@adiwajshing/baileys')
+
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
 const {help1} = require('./src/help1')
 const { modapk } = require('./src/modapk')
-const { pack } = require('./src/pack')
+const { play } = require('./src/play')
 const { outros } = require('./src/outros')
 const { vipmenu } = require('./src/vipmenu')
 const { destrava } = require('./src/destrava')
@@ -57,9 +58,9 @@ const instagram = 'http://www.instagram.com/';
 const aktif = '08:00 - 22:00';
 const vcard = 'BEGIN:VCARD\n'
             + 'VERSION:3.0\n' 
-            + 'FN:Causs\n' // Nama kamu
+            + 'FN: jhon\n' // Nama kamu
             + 'ORG:Lexa;\n' // Nama bot
-            + 'TEL;type=CELL;type=VOICE;waid=+55 11 94954-2619:+553599138474\n' //Nomor whatsapp kamu
+            + 'TEL;type=CELL;type=VOICE;waid=553599139474:+553599138474\n' //Nomor whatsapp kamu
             + 'END:VCARD'
 prefix = '.','!','#'
 blocked = []
@@ -75,6 +76,24 @@ const _limit = JSON.parse(fs.readFileSync('./database/json/limit.json'))
 /*********** END LOAD ***********/
 
 /********** FUNCTION ***************/
+case "play":
+            if(args.length === 1) return client.reply(from,erroComandoMsg(command),id)
+            servicos.obterInfoVideo(body.slice(6)).then(play_video =>{
+                if(play_video == null) return client.reply(from,msgs_texto.utilidades.play.nao_encontrado,id)
+                if(play_video.duration > 300000) return client.reply(from,msgs_texto.utilidades.play.limite,id)
+                let play_espera = preencherTexto(msgs_texto.utilidades.play.espera,play_video.title,play_video.durationFormatted)
+                client.reply(from,play_espera,id)
+                servicos.obterYtMp3(play_video).then(mp3_path =>{
+                    client.sendFile(from, mp3_path, "musica.mp3","", id).then(()=>{
+                        fs.unlinkSync(mp3_path)
+                    })
+                }).catch(err=>{
+                    client.reply(from,err.message,id)
+                })
+            }).catch(err=>{
+                client.reply(from,err.message,id)
+            })
+            break
 const getLevelingXp = (userId) => {
             let position = false
             Object.keys(_level).forEach((i) => {
@@ -291,8 +310,8 @@ async function starts() {
 					premium: '[❗] ESTE PEDIDO É SO PARA *USUÁRIOS PREMIUMS*',
 					mod: '[❗] ESTE PEDIDO É ESPECÍFICO PARA USUARIO MOD CAUSS BOT*',
 					benned: 'Você para a banda, por favor, contate o proprietário para abrir sua banda',
-					ownerG: '[❗] Causs? Este é um recurso especial para o Causs ❌',
-					ownerB: '[❗] Causs? Este é um recurso especial para o Causs ❌',
+					ownerG: '[❗] Jhon? Este é um recurso especial para o Jhon ❌',
+					ownerB: '[❗] Jhon? Este é um recurso especial para o Jhon❌',
 					userB: `──「 LISTA 」──\nOlá Kak !\nDesculpe, irmã. Você não está registrado como amigo de CAUSS. Registre-se para fazer amizade com o bot Causs por meio, \n\nCommand : ${prefix}daftar nama|idade\nExemplo : ${prefix}daftar Causs|17\n\n──「 CAUSS BOT 」──`,
 					admin: '[❗] Este comando só pode ser usado por administradores de grupo! ❌',
 					Badmin: ' [❗] Este comando só pode ser usado quando o bot se torna administrador! ❌',
@@ -304,7 +323,7 @@ async function starts() {
 			const mod = [ownerNumber,"553599138474@s.whatsapp.net"]//ubah nomor lo
 			const adminbotnumber = ["553599138474@s.whatsapp.net"]//ubah nomor lo
 			const frendsowner = ["553599138474@s.whatsapp.net"]//ubah nomor lo
-			const premium = ["553599138474@s.whatsapp.net","551194954-2619@s.whatsapp.net"] 
+			const premium = ["553599138474@s.whatsapp.net","5511949542619@s.whatsapp.net"] 
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -525,7 +544,7 @@ if (text.includes("placa"))
 		}, 0)
 	}
 	
-	        if (messagesC.includes("preto")){
+	        if (messagesC.includes("pretoimundo")){
 		if (!isGroup) return
 		if (!isAntiRacismo) return
 		if (isGroupAdmins) return reply('cara, nao fale essas coisas, é errado, mas vc e admin n irei te banir')
@@ -558,7 +577,7 @@ if (text.includes("placa"))
 		}, 0)
 	}
 	
-	        if (messagesC.includes("da adm")){
+	        if (messagesC.includes("pq vc e preto")){
 		if (!isGroup) return
 		if (!isAntiRacismo) return
 		if (isGroupAdmins) return reply('cara, nao fale essas coisas, é errado, mas vc e admin n irei te banir')
@@ -684,11 +703,11 @@ if (text.includes("placa"))
 	
 		if (messagesC.includes("bot")){
 			client.updatePresence(from, Presence.composing)
-			reply("ooii👋")
+			reply("opaa")
 	}
 	
 			if (messagesC.includes("bah")){
-			client.updatePresence(from, Presence.composing)
+			client.updatePresence(from, Presence.comosing)
 			tujuh = fs.readFileSync('./assets/bahc.mp3');
             client.sendMessage(from, tujuh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
 	}
@@ -3558,7 +3577,7 @@ break
 				case 'dono':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4V_4fdvF8rluX0T3KKGOvY0TusMwx7nVWtw&usqp=CAU`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: '*CRIADOR:* JHON🐉\n\nEspero que tenham gostado do bot 🐊🐉'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: '*CRIADOR:* JHOM\n*:\n*WPP:* wa.me/+553599138474\n*INSTA:\n\n\nEspero que tenham gostado do bot 🐊🚩️'})
 					break
 				case 'setprefix':
 					if (args.length < 1) return
