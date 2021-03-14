@@ -873,7 +873,7 @@ if (text.includes("placa"))
                     break
                    case 'play':
                     if (!isPremium) return reply(mess.only.premium)
-                    client.sendMessage(from, play,(prefix), text, { quoted: mek })
+                    client.sendMessage(from, play(prefix), text, { quoted: mek })
                     break
                    case 'chentai':
                     if (!isPremium) return reply(mess.only.premium)
